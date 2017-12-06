@@ -63,9 +63,9 @@ module.exports = app;
 
 With the above code, `ssr-engine` will do the following tasks:
 
-- load the config from `./src/configs`
+- load the config from `src/configs`
 - start Express server
-- attach the routers from `./src/routers`
+- attach the routers from `src/routers`
 
 
 #### Routing
@@ -138,6 +138,17 @@ For example:
 h1 #{title}
 .message #{message}
 ```
+
+
+#### Assets & static data
+
+In the template files, we can insert CSS and JavaScript files as normal.
+
+Local CSS and JS resources should be placed under `src/assets/css` and  `src/assets/jss` folders. They will be processed by PostCSS and Rollup, so that we are able to use the latest features in CSS4 or ES7 without problem.
+
+Third party CSS/JS - by running `npm run setup` - were saved into `dist/vendor`. They, similar to other external resources, will be ignored.
+
+Static data such as images, fonts, etc should be stored at `src/assets/static`. The whole content within this directory are public to the client.
 
 // Coming soon
 
