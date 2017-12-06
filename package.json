@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "name": "ssr-engine",
   "homepage": "https://ndaidong.github.io",
   "description": "Engine for server site renderer",
@@ -36,7 +36,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
     "pug": "^2.0.0-rc.4",
-    "rollup": "^0.50.0",
+    "rollup": "^0.52.1",
     "rollup-plugin-cleanup": "^2.0.0",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
