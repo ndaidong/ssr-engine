@@ -28,6 +28,40 @@ Setup website data by the default structure as below:
   |-- server.js
 ```
 
+#### Configuration
+
+In order to get the website run, we need to specify some values, such as port, host, etc. The default port is 9999.
+
+All site's configs should be placed under `src/configs`. Here is a simple `src/configs/index.js`:
+
+```
+const config = {
+  ENV: 'development',
+};
+
+config.host = '0.0.0.0';
+config.port = '8081';
+config.url = `http://${config.host}:${config.port}`;
+
+config.babel = {
+  presets: [
+    [
+      'env',
+      {
+        targets: {
+          browsers: [
+            '> 4%',
+          ],
+        },
+      },
+    ],
+  ],
+};
+
+module.exports = config;
+
+```
+
 #### Initiate
 
 Install `ssr-engine` as regular npm module if not yet:
@@ -150,7 +184,11 @@ Third party CSS/JS - by running `npm run setup` - were saved into `dist/vendor`.
 
 Static data such as images, fonts, etc should be stored at `src/assets/static`. The whole content within this directory are public to the client.
 
-// Coming soon
+
+#### Example
+
+
+- [mdl-skeleton](https://github.com/ndaidong/mdl-skeleton)
 
 
 
