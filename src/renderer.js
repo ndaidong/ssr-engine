@@ -30,6 +30,7 @@ const renderer = async (req, res, next) => {
     baseDir,
     distDir,
     srcDir,
+    ENV,
   } = getConfig();
 
   let fileDir = dirname(path);
@@ -46,12 +47,12 @@ const renderer = async (req, res, next) => {
   });
 
   if (fileExt === '.js') {
-    let js = await compileJS(fileSrc);
+    let js = await compileJS(fileSrc, ENV);
     return res.status(200).type('text/javascript').send(js);
   }
 
   if (fileExt === '.css') {
-    let css = await compileCSS(fileSrc);
+    let css = await compileCSS(fileSrc, ENV);
     return res.status(200).type('text/css').send(css);
   }
 

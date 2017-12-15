@@ -1,5 +1,9 @@
 // config
 
+const {
+  createId,
+} = require('bellajs');
+
 let config = {
   ENV: 'production',
   port: 6789,
@@ -22,6 +26,7 @@ let config = {
       ],
     ],
   },
+  rev: createId(40),
 };
 
 const configure = (conf = {}) => {

@@ -5,7 +5,10 @@ const readFile = require('./readFile');
 const isVendorAsset = require('./isVendorAsset');
 const minifyCSS = require('./minifyCSS');
 
-const compileCSS = async (fileSrc) => {
+const compileCSS = async (fileSrc, env = '') => {
+  if (env === 'production') {
+    return readFile(fileSrc);
+  }
   if (isVendorAsset(fileSrc)) {
     let content = readFile(fileSrc);
     return minifyCSS(content);
