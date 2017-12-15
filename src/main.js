@@ -35,9 +35,18 @@ const start = () => {
     port,
   } = config;
 
-  if (!existsSync(distDir)) {
-    mkdirp(distDir);
-  }
+  let jsDir = `${distDir}/js`;
+  let cssDir = `${distDir}/css`;
+
+  [
+    distDir,
+    cssDir,
+    jsDir,
+  ].forEach((dir) => {
+    if (!existsSync(dir)) {
+      mkdirp(dir);
+    }
+  });
 
   let staticOpt = {
     maxAge: 24 * 60 * 6e4,

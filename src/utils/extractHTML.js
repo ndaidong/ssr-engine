@@ -1,10 +1,47 @@
 // utils / buildPage
 
+const {
+  basename,
+  dirname,
+  extname,
+} = require('path');
+
 const {load} = require('cheerio');
 
-const isAbsoluteURL = require('./isAbsoluteURL');
+const {
+  warning,
+} = require('./logger');
 
-const extractHTML = (content, srcDir) => {
+const isAbsoluteURL = require('./isAbsoluteURL');
+const getAssetPath = require('./getAssetPath');
+
+const {
+  getConfig,
+} = require('../config');
+
+const getRealPath = (path) => {
+  let {
+    baseDir,
+    srcDir,
+    distDir,
+  } = getConfig();
+  let fileDir = dirname(path);
+  let fileExt = extname(path);
+  let fileName = basename(path, fileExt);
+
+  let fileSrc = getAssetPath({
+    baseDir,
+    distDir,
+    srcDir,
+    fileDir,
+    fileName,
+    fileExt,
+  });
+
+  return fileSrc;
+};
+
+const extractHTML = (content) => {
   let $ = load(content, {
     normalizeWhitespace: true,
   });
@@ -14,7 +51,12 @@ const extractHTML = (content, srcDir) => {
     let $el = $(el);
     let href = $el.attr('href') || '';
     if (href && !isAbsoluteURL(href)) {
-      css.push(`${srcDir}/${href}`);
+      let realPath = getRealPath(href);
+      if (realPath) {
+        css.push(realPath);
+      } else {
+        warning(`File not found: "${href}"`);
+      }
       $el.remove();
     }
   });
@@ -24,7 +66,12 @@ const extractHTML = (content, srcDir) => {
     let $el = $(el);
     let src = $el.attr('src') || '';
     if (src && !isAbsoluteURL(src)) {
-      js.push(`${srcDir}/${src}`);
+      let realPath = getRealPath(src);
+      if (realPath) {
+        js.push(realPath);
+      } else {
+        warning(`File not found: "${src}"`);
+      }
       $el.remove();
     }
   });

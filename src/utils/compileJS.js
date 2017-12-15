@@ -5,7 +5,10 @@ const rollupify = require('./rollupify');
 const isVendorAsset = require('./isVendorAsset');
 const minifyJS = require('./minifyJS');
 
-const compileJS = async (fileSrc) => {
+const compileJS = async (fileSrc, env = '') => {
+  if (env === 'production') {
+    return readFile(fileSrc);
+  }
   if (isVendorAsset(fileSrc)) {
     let content = readFile(fileSrc);
     return minifyJS(content);
