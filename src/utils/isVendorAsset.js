@@ -1,7 +1,8 @@
 // utils / isVendorAsset
 
-const isVendorAsset = (file) => {
-  return file.includes('node_modules/') || file.includes(`vendor/`);
+const isVendorAsset = (file = '') => {
+  let f = String(file);
+  return f.includes('node_modules/') || f.includes(`vendor/`);
 };
 
 module.exports = isVendorAsset;

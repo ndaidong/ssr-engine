@@ -20,7 +20,9 @@ const minifyCSS = async (css) => {
       cssclean({
         advanced: true,
       }),
-    ]).process(css);
+    ]).process(css, {
+      from: undefined,
+    });
     return removeComments(result.css);
   } catch (err) {
     error(err);
