@@ -1,6 +1,7 @@
 # ssr-engine
 Engine for server site renderer
 
+[![npm version](https://badge.fury.io/js/ssr-engine.svg)](https://badge.fury.io/js/ssr-engine)
 [![Build Status](https://travis-ci.org/ndaidong/ssr-engine.svg?branch=master)](https://travis-ci.org/ndaidong/ssr-engine)
 [![Dependency Status](https://gemnasium.com/badges/github.com/ndaidong/ssr-engine.svg)](https://gemnasium.com/github.com/ndaidong/ssr-engine)
 [![NSP Status](https://nodesecurity.io/orgs/techpush/projects/9e06e9e7-d07b-4d18-9280-4031ad6e3298/badge)](https://nodesecurity.io/orgs/techpush/projects/9e06e9e7-d07b-4d18-9280-4031ad6e3298)
@@ -120,7 +121,7 @@ module.exports = (app) => {
 
 #### Page script
 
-Page script is place where we define app's logic, such as retrieve remote data then response in JSON format, or load template file then render as HTML content.
+Page script is place where we start handling the requests from client. We should transfer the parameters to the models, or additional helpers, utils, services... to keep these scripts short and clear. The last thing we need is output data to response in JSON format, or render with the template files.
 
 Here is `pages/api.js` for the above router:
 
