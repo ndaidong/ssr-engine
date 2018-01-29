@@ -1,5 +1,5 @@
 {
-  "version": "0.0.7",
+  "version": "0.0.8",
   "name": "ssr-engine",
   "homepage": "https://ndaidong.github.io",
   "description": "Engine for server site renderer",

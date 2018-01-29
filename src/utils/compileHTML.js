@@ -1,8 +1,5 @@
 // utils / compileHTML
 
-const CACHE_LIFE_TIME = 10 * 6e4;
-const cache = require('lru-cache')(30);
-
 const {
   extname,
   normalize,
@@ -25,10 +22,6 @@ const {
 const writeFile = require('./writeFile');
 
 const {
-  info,
-} = require('./logger');
-
-const {
   getConfig,
 } = require('../config');
 
@@ -40,13 +33,6 @@ const extractJS = require('./extractJS');
 
 const optimize = async (content, templateName) => {
   let fileName = md5(templateName);
-
-  let presaved = cache.get(fileName);
-  if (presaved) {
-    info('Use presaved HTML from cache.');
-    return presaved;
-  }
-
   let {
     distDir,
     rev,
@@ -56,7 +42,7 @@ const optimize = async (content, templateName) => {
     css,
     js,
     html,
-  } = extractHTML(content);
+  } = await extractHTML(content);
 
   let $ = load(html);
 
@@ -81,7 +67,6 @@ const optimize = async (content, templateName) => {
   }
 
   let output = minifyHTML($.html());
-  cache.set(fileName, output, CACHE_LIFE_TIME);
   return output;
 };
 
