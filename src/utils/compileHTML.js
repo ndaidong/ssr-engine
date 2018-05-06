@@ -51,9 +51,9 @@ const optimize = async (content, templateName) => {
     let outputCSSFile = `${distDir}/css/${fileName}.css`;
     writeFile(outputCSSFile, sCSS);
 
-    let subTag = `<link rel="subresource" href="css/${fileName}.css">`;
+    let subTag = `<link rel="subresource" href="/css/${fileName}.css">`;
     $('head').append(subTag);
-    let styleTag = `<link rel="stylesheet" type="text/css" href="css/${fileName}.css?rev=${rev}">`;
+    let styleTag = `<link rel="stylesheet" type="text/css" href="/css/${fileName}.css?rev=${rev}">`;
     $('head').append(styleTag);
   }
 
@@ -62,7 +62,7 @@ const optimize = async (content, templateName) => {
     let outputJSFile = `${distDir}/js/${fileName}.js`;
     writeFile(outputJSFile, sJS);
 
-    let scriptTag = `<script type="text/javascript" defer="true" src="js/${fileName}.js?rev=${rev}"></script>`;
+    let scriptTag = `<script type="text/javascript" defer="true" src="/js/${fileName}.js?rev=${rev}"></script>`;
     $('body').append(scriptTag);
   }
 
