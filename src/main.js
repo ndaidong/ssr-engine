@@ -57,6 +57,7 @@ const start = () => {
   let app = express();
   app.set('config', config);
   app.set('etag', 'strong');
+  app.disable('x-powered-by');
 
   let staticDir = normalize(`${baseDir}/${srcDir}/assets/static`);
   if (existsSync(staticDir)) {
