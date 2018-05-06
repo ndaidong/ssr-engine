@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "ssr-engine",
   "homepage": "https://ndaidong.github.io",
   "description": "Engine for server site renderer",
@@ -37,12 +37,12 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
     "pug": "^2.0.0-rc.4",
-    "rollup": "^0.56.5",
+    "rollup": "^0.58.2",
     "rollup-plugin-cleanup": "3.0.0-beta.1",
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "strip-css-comments": "^3.0.0",
-    "uglify-es": "^3.3.10"
+    "uglify-es": "3.3.9"
   },
   "devDependencies": {
     "eslint": "^4.10.0",
