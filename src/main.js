@@ -25,7 +25,7 @@ const onStarted = () => {
   return true;
 };
 
-const start = () => {
+const start = (middlewares = []) => {
   let config = getConfig();
 
   let {
@@ -58,6 +58,10 @@ const start = () => {
   app.set('config', config);
   app.set('etag', 'strong');
   app.disable('x-powered-by');
+
+  middlewares.forEach((mw) => {
+    app.use(mw);
+  });
 
   let staticDir = normalize(`${baseDir}/${srcDir}/assets/static`);
   if (existsSync(staticDir)) {
