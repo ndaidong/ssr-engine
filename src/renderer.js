@@ -18,9 +18,20 @@ const {
 
 const getAssetPath = require('./utils/getAssetPath');
 
+const send = (res, type, content) => {
+  let {
+    ENV,
+  } = getConfig();
+  if (ENV === 'production') {
+    res.set('Cache-Control', 'public, max-age=2592000');
+    res.set('Expires', new Date(Date.now() + 2592000000).toUTCString());
+  }
+  return res.status(200).type(type).send(content);
+};
+
 const render = async (template, data = {}, res) => {
   let html = await compileHTML(template, data);
-  return res.status(200).send(html);
+  return send(res, 'text/html', html);
 };
 
 const renderer = async (req, res, next) => {
@@ -48,12 +59,12 @@ const renderer = async (req, res, next) => {
 
   if (fileExt === '.js') {
     let js = await compileJS(fileSrc, ENV);
-    return res.status(200).type('text/javascript').send(js);
+    return send(res, 'text/javascript', js);
   }
 
   if (fileExt === '.css') {
     let css = await compileCSS(fileSrc, ENV);
-    return res.status(200).type('text/css').send(css);
+    return send(res, 'text/css', css);
   }
 
   res.render404 = () => {
