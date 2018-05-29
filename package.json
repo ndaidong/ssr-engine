@@ -9,7 +9,7 @@
   },
   "author": "@ndaidong",
   "engines": {
-    "node": ">= 7.6"
+    "node": ">= 8.0"
   },
   "main": "./index.js",
   "scripts": {
