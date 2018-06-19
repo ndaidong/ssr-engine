@@ -43,21 +43,6 @@ config.host = '0.0.0.0';
 config.port = '8081';
 config.url = `http://${config.host}:${config.port}`;
 
-config.babel = {
-  presets: [
-    [
-      'env',
-      {
-        targets: {
-          browsers: [
-            '> 4%',
-          ],
-        },
-      },
-    ],
-  ],
-};
-
 module.exports = config;
 
 ```

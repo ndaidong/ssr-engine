@@ -12,20 +12,6 @@ let config = {
   baseDir: './',
   srcDir: './src',
   distDir: './dist',
-  babel: {
-    presets: [
-      [
-        'env',
-        {
-          targets: {
-            browsers: [
-              '> 4%',
-            ],
-          },
-        },
-      ],
-    ],
-  },
   rev: createId(40),
 };
 
