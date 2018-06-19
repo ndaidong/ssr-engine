@@ -18,13 +18,15 @@ const {
 
 const getAssetPath = require('./utils/getAssetPath');
 
+
 const send = (res, type, content) => {
   let {
     ENV,
+    cacheTime,
   } = getConfig();
   if (ENV === 'production') {
-    res.set('Cache-Control', 'public, max-age=2592000');
-    res.set('Expires', new Date(Date.now() + 2592000000).toUTCString());
+    res.set('Cache-Control', 'public, max-age=' + cacheTime);
+    res.set('Expires', new Date(Date.now() + cacheTime * 1000).toUTCString());
   }
   return res.status(200).type(type).send(content);
 };

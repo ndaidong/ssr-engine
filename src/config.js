@@ -13,6 +13,7 @@ let config = {
   srcDir: './src',
   distDir: './dist',
   rev: createId(40),
+  cacheTime: 3600, // 1 hour of HTTP cache
 };
 
 const configure = (conf = {}) => {

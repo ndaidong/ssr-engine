@@ -33,6 +33,7 @@ const start = (middlewares = []) => {
     srcDir,
     distDir,
     port,
+    cacheTime,
   } = config;
 
   let jsDir = `${distDir}/js`;
@@ -49,7 +50,7 @@ const start = (middlewares = []) => {
   });
 
   let staticOpt = {
-    maxAge: 24 * 60 * 6e4,
+    maxAge: cacheTime * 1000,
     etag: true,
     lastModified: true,
   };
