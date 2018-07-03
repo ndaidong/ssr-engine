@@ -1,7 +1,7 @@
 // utils / postify
 
 const postcss = require('postcss');
-const cssnext = require('postcss-cssnext');
+const presetenv = require('postcss-preset-env');
 const mqpacker = require('css-mqpacker');
 const atImport = require('postcss-import');
 
@@ -13,7 +13,9 @@ const readFile = require('./readFile');
 
 const POSTCSS_PLUGINS = [
   atImport(),
-  cssnext(),
+  presetenv({
+    stage: 3,
+  }),
   mqpacker({
     sort: true,
   }),
