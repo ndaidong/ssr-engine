@@ -14,7 +14,11 @@ const readFile = require('./readFile');
 const POSTCSS_PLUGINS = [
   atImport(),
   presetenv({
-    stage: 3,
+    features: {
+      'custom-properties': true,
+      'media-query-ranges': true,
+      'nesting-rules': true,
+    },
   }),
   mqpacker({
     sort: true,
