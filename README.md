@@ -66,7 +66,20 @@ config.baseDir = __dirname;
 
 ssre.configure(config);
 
-let app = ssre.start();
+// use middlewares
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+
+const middlewares = [
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+  cookieParser(),
+];
+
+// start with middlewares
+
+let app = ssre.start(middlewares);
 let appConfig = app.get('config');
 let {
   ENV,
