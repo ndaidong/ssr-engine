@@ -1,5 +1,5 @@
 # ssr-engine
-Engine for server site renderer
+Engine for server site renderer. Based on Express.js and Pug template.
 
 [![npm version](https://badge.fury.io/js/ssr-engine.svg)](https://badge.fury.io/js/ssr-engine)
 [![Build Status](https://travis-ci.org/ndaidong/ssr-engine.svg?branch=master)](https://travis-ci.org/ndaidong/ssr-engine)
@@ -66,7 +66,7 @@ config.baseDir = __dirname;
 
 ssre.configure(config);
 
-// use middlewares
+// middlewares
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
@@ -77,7 +77,7 @@ const middlewares = [
   cookieParser(),
 ];
 
-// start with middlewares
+// start with middlewares (optional)
 
 let app = ssre.start(middlewares);
 let appConfig = app.get('config');
@@ -183,9 +183,11 @@ Third party CSS/JS - by running `npm run setup` - were saved into `dist/vendor`.
 Static data such as images, fonts, etc should be stored at `src/assets/static`. The whole content within this directory are public to the client.
 
 
-#### Example
+#### Examples
 
 
+- [TechNews](https://news.ctdtmnhnlcndt.com/)
+- [TinGiHot](https://tingihot.com/)
 - [mdl-skeleton](https://github.com/ndaidong/mdl-skeleton)
 
 
